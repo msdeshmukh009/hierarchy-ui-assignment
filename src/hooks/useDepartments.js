@@ -142,6 +142,19 @@ const useDepartments = () => {
     updateLocalStorage(updatedDepartments);
   };
 
+  const removeTeam = (departmentName, teamId) => {
+    const updatedDepartments = companyDepartments.map(department =>
+      department.departmentName === departmentName
+        ? {
+            ...department,
+            teams: department.teams.filter(team => team.id !== teamId),
+          }
+        : department
+    );
+    setCompanyDepartments(updatedDepartments);
+    updateLocalStorage(updatedDepartments);
+  };
+
   return {
     companyDepartments,
     setCompanyDepartments,
@@ -151,6 +164,7 @@ const useDepartments = () => {
     removeMember,
     addNewTeam,
     updateTeamInfo,
+    removeTeam,
   };
 };
 

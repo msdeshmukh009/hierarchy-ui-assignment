@@ -12,7 +12,7 @@ const TeamForm = ({ info = defaultInfo, isDisplayingInfo, setShowModal, departme
   const [teamInfo, setTeamInfo] = useState(info);
   const [isUpdating, setIsUpdating] = useState(false);
 
-  const { addNewTeam, updateTeamInfo } = useDepartments();
+  const { addNewTeam, updateTeamInfo, removeTeam } = useDepartments();
 
   const {
     teamName,
@@ -54,15 +54,26 @@ const TeamForm = ({ info = defaultInfo, isDisplayingInfo, setShowModal, departme
     updateTeamInfo(departmentName, teamInfo);
     setShowModal(false);
   };
+
+  const handleDelete = e => {
+    e.preventDefault();
+    removeTeam(departmentName, teamInfo.id);
+  };
+
   const disableBtn = () => {
     return !(name !== "" && email !== "" && phone !== "" && teamName !== "");
   };
   return (
     <form className="bg-neutral-100 p-4 rounded-md flex flex-col gap-2">
       {isDisplayingInfo ? (
-        <button className="bg-blue-400 p-2 rounded-md" onClick={enableEdit}>
-          Edit
-        </button>
+        <div className="flex gap-2 justify-center">
+          <button className="bg-neutral-200  p-2 rounded-md" onClick={handleDelete}>
+            Delete
+          </button>
+          <button className="bg-blue-400 p-2 rounded-md" onClick={enableEdit}>
+            Edit
+          </button>
+        </div>
       ) : null}
       <input
         value={teamName}
