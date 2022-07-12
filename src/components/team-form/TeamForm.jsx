@@ -37,7 +37,10 @@ const TeamForm = ({ info = defaultInfo, isDisplayingInfo, setShowModal, departme
 
   const handleAdd = e => {
     e.preventDefault();
-    addNewTeam(departmentName, teamInfo);
+    addNewTeam(departmentName, {
+      ...teamInfo,
+      teamLead: { ...teamInfo.teamLead, role: `${departmentName} Team Lead` },
+    });
     setShowModal(false);
   };
 
