@@ -18,7 +18,7 @@ const Member = ({ member, team, departmentName, isTeamLead }) => {
         />
       </Modal>
 
-      <div className="member" href="#">
+      <div className="member">
         <span>{member.name}</span>
         <span>{member.role}</span>
       </div>

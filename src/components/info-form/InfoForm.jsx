@@ -40,7 +40,6 @@ const InfoForm = ({
     e.stopPropagation();
 
     if (teamName !== employeeInfo.teamName) {
-      console.log(isTeamLead);
       changeTeam(teamName, employeeInfo.teamName, departmentName, employeeInfo);
     } else {
       updateInfo(teamName, employeeInfo, departmentName, isTeamLead);
@@ -120,7 +119,6 @@ const InfoForm = ({
           value={employeeInfo.teamName}
           className="focus:outline-none p-2 rounded-md"
           onChange={e => {
-            console.log("Clicked");
             setEmployeeInfo(prevInfo => ({ ...prevInfo, teamName: e.target.value }));
           }}
         >
