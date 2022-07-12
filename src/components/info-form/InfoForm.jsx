@@ -62,7 +62,7 @@ const InfoForm = ({
     return companyDepartments
       .find(department => department.departmentName === departmentName)
       ?.teams.map(team => team.teamName);
-  }, [departmentName]);
+  }, [departmentName, companyDepartments]);
 
   const disableBtn = () => {
     return !(name !== "" && email !== "" && phone !== "");
